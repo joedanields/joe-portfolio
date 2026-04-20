@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 const chars = "▓▒░█01ABCDEF";
+const REVEAL_SPEED = 0.5;
 
 export function TextScramble({ text }: { text: string }) {
   const [display, setDisplay] = useState(text);
@@ -26,7 +27,7 @@ export function TextScramble({ text }: { text: string }) {
           .map((char, index) => (index < frame ? char : chars[Math.floor(Math.random() * chars.length)]))
           .join("")
       );
-      frame += 1 / 2;
+      frame += REVEAL_SPEED;
       if (frame >= text.length) {
         if (intervalRef.current) {
           window.clearInterval(intervalRef.current);

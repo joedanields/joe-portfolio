@@ -7,9 +7,11 @@ import { useUIStore } from "@/hooks/use-ui-store";
 export function MagneticButton({
   children,
   className,
+  radius = 20,
 }: {
   children: React.ReactNode;
   className?: string;
+  radius?: number;
 }) {
   const ref = useRef<HTMLButtonElement | null>(null);
   const x = useMotionValue(0);
@@ -18,7 +20,6 @@ export function MagneticButton({
   const springY = useSpring(y, { stiffness: 200, damping: 18 });
   const { setCursorVariant } = useUIStore();
 
-  const radius = 20;
 
   return (
     <motion.button
